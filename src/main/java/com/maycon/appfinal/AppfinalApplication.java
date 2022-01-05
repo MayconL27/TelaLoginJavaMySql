@@ -134,6 +134,27 @@ public class AppfinalApplication {
                 }
                 // 2 Mostrar tarefas finalizadas
                 case "2": {
+                    System.out.println("=== TAREFAS FINALIZADAS ===");
+
+                    ArrayList<Tarefa> lista = usuarioLogado.getTarefas();
+                    ArrayList<Tarefa> finalizadas = new ArrayList();
+
+                    for (Tarefa t : lista) {
+                        if (t.isFinalizada()) {
+                            finalizadas.add(t);
+                        }
+                    }
+                    if (finalizadas.isEmpty()) {
+                        System.out.println("Não á tarefas finalizadas.");
+                    }
+
+                    for (int i = 0; i < finalizadas.size(); i++) {
+                        Tarefa t = finalizadas.get(i);
+                        System.out.println("Tarefa " + i);
+                        System.out.println("\tTítulo: " + t.getTitulo());
+                        System.out.println("\tFinalizada: " + t.isFinalizada());
+                    }
+
                     break;
                 }
                 // 3 Mostrar tarefas não finalizadas
