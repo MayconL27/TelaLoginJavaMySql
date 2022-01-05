@@ -3,6 +3,7 @@ package com.maycon.appfinal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.maycon.appfinal.model.Tarefa;
 import com.maycon.appfinal.model.Usuario;
 
 import org.springframework.boot.SpringApplication;
@@ -40,6 +41,9 @@ public class AppfinalApplication {
                 Usuario u = new Usuario();
                 u.getEmail(email);
                 u.getSenha(senha);
+
+                ArrayList<Tarefa> tarefas = new ArrayList();
+                u.setTarefas(tarefas);
 
                 usuarios.add(u); // adicionar array lista de usuarios em user.
 
@@ -109,6 +113,23 @@ public class AppfinalApplication {
             switch (opcao) {
                 // 1 mostrar tarefas
                 case "1": {
+                    System.out.println("===Lista de Tarefas===");
+                    ArrayList<Tarefa> lista = usuarioLogado.getTarefas();
+
+                    // CASOO LISTA DE TAREFAS ESTEJA VAZIA.
+                    if (lista.isEmpty()) {
+                        System.out.println("Lista de tarefas vazia.");
+                    }
+
+                    for(int i =0; i < lista.size(); i++) {
+
+                        Tarefa t = lista.get(i);
+                        System.out.println("Tarefa: " + i);
+                        System.out.println("\tTitulo: " + t.getTitulo());
+                        System.out.println("\tFinalizada: " + t.isFinalizada());
+
+                    }
+
                     break;
                 }
                 // 2 Mostrar tarefas finalizadas
