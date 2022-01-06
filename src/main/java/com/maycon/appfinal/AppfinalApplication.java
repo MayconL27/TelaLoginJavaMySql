@@ -159,6 +159,27 @@ public class AppfinalApplication {
                 }
                 // 3 Mostrar tarefas não finalizadas
                 case "3": {
+                    System.out.println("=== TAREFAS NÃO FINALIZADAS ===");
+
+                    ArrayList<Tarefa> lista = usuarioLogado.getTarefas(); // PEGAR LISTA DE TAREFAS DO USUARIO LOGADO
+                    ArrayList<Tarefa> naoFinalizadas = new ArrayList(); // ARRAY PRA GUARDA AS NÃO FINALIZADAS
+
+                    for (Tarefa t : lista) {
+                        if (!t.isFinalizada()) {
+                            naoFinalizadas.add(t);
+                        }
+                    }
+                    if (naoFinalizadas.isEmpty()) { // VERIFICA SE naoFinalizadas É VAZIO.
+                        System.out.println("Nãp há tarefas em aberto");
+                    }
+
+                    for (int i = 0; i < naoFinalizadas.size(); i++) {
+                        Tarefa t = naoFinalizadas.get(i);
+                        System.out.println("Tarefa " + i);
+                        System.out.println("\tTítulo: " + t.getTitulo());
+                        System.out.println("\tFinalizada: " + t.isFinalizada());
+                    }
+
                     break;
                 }
                 // 4 Adicionar tarefas
